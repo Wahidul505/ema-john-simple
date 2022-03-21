@@ -1,0 +1,17 @@
+.header{
+    background-color: #1C2B35;
+}
+.header nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    height: 80px;
+    margin: 0px auto;
+}
+.header a{
+    text-decoration: none;
+    color: white;
+    margin-left: 36px;
+    font-size: 17px;
+}
