@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './SignUp.css';
 
 const SignUp = () => {
@@ -7,16 +9,34 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
+    const handleGetEmail = e =>{
+        setEmail(e.target.value);
+    };
+    const handleGetPassword = e =>{
+        setPassword(e.target.value);
+    };
+    const handleGetConfirmPassword = e =>{
+        setConfirmPassword(e.target.value);
+    };
     const handleSignUp = e =>{
         e.preventDefault();
-        setEmail(e.target.email.value);
-        setPassword(e.target.password.value);
-        setConfirmPassword(e.target.confirm_password.value);
+        console.log(email, password);
         if(password !== confirmPassword){
             setError("Password didn't matched");
             return;
         }
+        if(password.length < 6){
+            setError('Password is too short');
+            return;
+        }
+        createUserWithEmailAndPassword(email, password);
         setError('');
+    };
+    if(user){
+        console.log(user);
+        navigate('/shop');
     }
     return (
         <div className='form-container'>
@@ -24,15 +44,15 @@ const SignUp = () => {
                <form onSubmit={handleSignUp}>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" required/>
+                        <input onBlur={handleGetEmail} type="email" name="email" required/>
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" required/>
+                        <input onBlur={handleGetPassword} type="password" name="password" required/>
                     </div>
                     <div className="input-group">
                         <label htmlFor="confirm-password">Confirm Password</label>
-                        <input type="password" name="confirm_password" required/>
+                        <input onBlur={handleGetConfirmPassword} type="password" name="confirm_password" required/>
                     </div>
                     <p style={{color:'red'}}>{error}</p>
                     <input className='submit-btn' type="submit" value="SignUp" />
