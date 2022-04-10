@@ -9,10 +9,14 @@
 6. In firebase.init.js, import {getAuth} from 'firebase/auth'; & set const auth = getAuth(app) & export default auth;
 7. Create LogIn and SignUp component and setup the routes.
 8. npm install --save react-firebase-hooks 
-9. Attache event handler to get email, password and confirm password from the input field of signup component.
-10. Use useCreateUserWithEmailAndPassword hooks from-react-firebase hooks and get the user from it.
-11. 
-
+9. Attache event handler to get email, password and confirm password from the input field in signUp component.
+10. Use useCreateUserWithEmailAndPassword hooks from react-firebase-hooks to implement signUp in SignUp component.
+11. Get user using useAuthState() from react-firebase-hooks to access user in different component.
+12. User useSignInWithEmailAndPassword hooks from react-firebase-hooks to implement signIn in SignIn component.
+13. Create RequireAuth component to implement private routes and receive children prop and use condition to authorize user in a specific route. 
+14. Wrap the children route (which you need to protect as a private route) with the RequireAuth route in App.js
+component.
+15. Toggle between logIn Link and logOut button in header component as user is logged in or logged out. 
 
 
  */
