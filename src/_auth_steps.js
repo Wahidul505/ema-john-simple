@@ -1,6 +1,5 @@
 /* 
 
-
 1. create-react-app
 2. Create firebase app with the same name and register it.
 3. Go to firebase app > project > build > authentication > enable the sign in method.
@@ -17,6 +16,16 @@
 14. Wrap the children route (which you need to protect as a private route) with the RequireAuth route in App.js
 component.
 15. Toggle between logIn Link and logOut button in header component as user is logged in or logged out. 
-
-
  */
+
+
+/* 
+// Steps to deploy the react firebase project using firebase:
+
+1. npm install -g firebase-tools : (one time for my computer)
+2. firebase login : (one time for my computer)
+3. firebase init : (one time for every project)
+4. npm run build : (every time after modifying the project)
+5. firebase deploy : (every time after modifying the project)
+
+*/

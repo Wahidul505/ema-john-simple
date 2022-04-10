@@ -18,6 +18,14 @@
 .header a:hover{
     color: rgb(255, 166, 0);
 }
+.log-out-btn{
+    margin-left: 30px;
+    border: none;
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
 @media screen and (max-width: 592px) {
     .header{
         padding: 0px 10px;
