@@ -2,26 +2,24 @@ import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
-import useProducts from '../../hooks/useProducts';
 import { removeFromCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import './Orders.css';
 
 const Orders = () => {
-    const [products, setProducts] = useProducts();
-    const [cart, setCart] = useCart(products);
+    const [cart, setCart] = useCart();
     const deleteItem = item =>{
-        const rest = cart.filter(element => element.id !== item.id);
+        const rest = cart.filter(element => element._id !== item._id);
         setCart(rest);
-        removeFromCart(item.id);
+        removeFromCart(item._id);
     }
     return (
         <div className='orders-container'>
             <div className='review-items-container'>
                 {
                     cart.map(item => <ReviewItem 
-                        key={item.id} 
+                        key={item._id} 
                         item={item}
                         deleteItem={deleteItem}
                         ></ReviewItem>)

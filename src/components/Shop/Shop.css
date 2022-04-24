@@ -8,6 +8,25 @@
     grid-gap: 20px;
     padding: 30px;
 }
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.pagination button{
+    cursor: pointer;
+    border: 1px solid orange;
+    border-radius: 5px;
+    background-color: white;
+    padding: 2px 8px;
+}
+.pagination .selected-page{
+    border: none;
+    background-color: orange;
+    color: white;
+}
 @media screen and (max-width:592px) {
     .shop-container{
         grid-template-columns: repeat(2,1fr);
