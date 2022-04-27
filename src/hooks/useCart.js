@@ -7,7 +7,7 @@ const useCart = () => {
         const storedCart = getStoredCart();
         const savedCart = [];
         const keys = Object.keys(storedCart);
-        fetch('http://localhost:5000/productByKey', {
+        fetch('https://mysterious-bayou-13531.herokuapp.com/productByKey', {
             headers: {
                 'content-type': 'application/json'
             },
@@ -16,6 +16,7 @@ const useCart = () => {
         })
             .then(res => res.json())
             .then(products => {
+                console.log(products)
                 for (const id in storedCart) {
                     const storedProduct = products.find(product => product._id === id);
                     if (storedProduct) {

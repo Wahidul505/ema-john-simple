@@ -15,13 +15,13 @@ const Shop = () => {
     const [size, setSize] = useState(10);
     const [products, setProducts] = useState([]);
     useEffect( ()=>{
-        fetch(`http://localhost:5000/product?page=${page}&size=${size}`)
+        fetch(`https://mysterious-bayou-13531.herokuapp.com/product?page=${page}&size=${size}`)
         .then(res => res.json())
         .then(data => setProducts(data));
     }, [page, size]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/productCount')
+        fetch('https://mysterious-bayou-13531.herokuapp.com/productCount')
             .then(res => res.json())
             .then(data => {
                 const count = data.count;
